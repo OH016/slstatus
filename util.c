@@ -90,14 +90,14 @@ bprintf(const char *fmt, ...)
 }
 
 const char *
-fmt_human(uintmax_t num, int base)
+fmt_human(uintmax_t num, uint16_t base)
 {
-	double scaled;
+	uint32_t scaled;
 	size_t i, prefixlen;
 	const char **prefix;
-	const char *prefix_1000[] = { "", "k", "M", "G", "T", "P", "E", "Z",
-	                              "Y" };
-	const char *prefix_1024[] = { "", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei",
+	const char *prefix_1000[] = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB",
+	                              "YB" };
+	const char *prefix_1024[] = { "B", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei",
 	                              "Zi", "Yi" };
 
 	switch (base) {
@@ -118,7 +118,7 @@ fmt_human(uintmax_t num, int base)
 	for (i = 0; i < prefixlen && scaled >= base; i++)
 		scaled /= base;
 
-	return bprintf("%.1f %s", scaled, prefix[i]);
+	return bprintf("%d%s", scaled, prefix[i]);
 }
 
 int
@@ -143,16 +143,16 @@ pscanf(const char *path, const char *fmt, ...)
 int
 lscanf(FILE *fp, const char *key, const char *fmt, void *res)
 {
-		int n;
-		char line[256];
-
-		n = -1;
-		while (fgets(line, sizeof(line), fp))
-			if (strncmp(line, key, strlen(key)) == 0) {
-				n = sscanf(line + strlen(key), fmt, res);
-				break;
-			}
-
-		rewind(fp);
-		return (n == 1) ? 1 : -1;
+ 		int n;
+ 		char line[256];
+ 
+ 		n = -1;
+ 		while (fgets(line, sizeof(line), fp))
+ 			if (strncmp(line, key, strlen(key)) == 0) {
+ 				n = sscanf(line + strlen(key), fmt, res);
+ 				break;
+ 			}
+ 
+ 		rewind(fp);
+ 		return (n == 1) ? 1 : -1;
 }
