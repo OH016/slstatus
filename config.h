@@ -3,11 +3,8 @@
 /* interval between updates (in ms) */
 const unsigned int interval = 1000;
 
-/* text to show if no value can be retrieved */
-static const char unknown_str[] = "";
-
 /* maximum output string length */
-#define MAXLEN 2048
+#define MAXLEN 128
 
 /*
  * function            description                     argument (example)
@@ -24,12 +21,12 @@ static const char unknown_str[] = "";
 static const struct arg args[] = {
 	/* function format          argument */
 	{ wifi_essid,	"󰖩 %s ",	"wlan0" },
-	{ netspeed_rx,	"RX %-5s ",	"wlan0" },
 	{ netspeed_tx,	"TX %-5s ",	"wlan0" },
+	{ netspeed_rx,	"RX %-5s ",	"wlan0" },
 	{ vol_perc, 	"󰕾 %s%% ",	"Master" },
 	{ cpu_perc, 	" %s%% ",	NULL },
 	{ temp,		"󰔏 %s°C ",	"/sys/class/thermal/thermal_zone1/temp" },
-	{ ram_perc, 	"󰍜 %s%% ",	NULL },
+	{ ram_perc, 	"󱘲 %s%% ",	NULL },
 	{ battery_perc, "󱐋 %s%% ",	"BAT0" },
 	{ datetime, 	"󰥔 %s",		"%R" },
 };

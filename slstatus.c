@@ -47,9 +47,7 @@ main(void)
 
 		status[0] = '\0';
 		for (i = len = 0; i < LEN(args); i++) {
-			if (!(res = args[i].func(args[i].args)))
-				res = unknown_str;
-
+			res = args[i].func(args[i].args);
 			if ((ret = esnprintf(status + len, sizeof(status) - len,
 			                     args[i].fmt, res)) < 0)
 				break;
