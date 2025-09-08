@@ -25,7 +25,7 @@ static const struct arg args[] = {
 	{ netspeed_rx,	"RX %-5s ",	"wlan0" },
 	{ vol_perc, 	"󰕾 %s%% ",	"Master" },
 	{ cpu_perc, 	" %s%% ",	NULL },
-	{ temp,		"󰔏 %s°C ",	"/sys/class/thermal/thermal_zone1/temp" },
+	{ temp,		"󰔏 %s°C ",	"/sys/class/thermal/thermal_zone0/temp" },
 	{ ram_perc, 	"󱘲 %s%% ",	NULL },
 	{ battery_perc, "󱐋 %s%% ",	"BAT0" },
 	{ datetime, 	"󰥔 %s",		"%R" },
