@@ -21,8 +21,8 @@ const unsigned int interval = 1000;
 static const struct arg args[] = {
 	/* function format          argument */
 	{ wifi_essid,	"󰖩 %s ",	"wlan0" },
-	{ netspeed_tx,	"TX %-5s ",	"wlan0" },
-	{ netspeed_rx,	"RX %-5s ",	"wlan0" },
+	{ netspeed_tx,	"󰁝 %-5s ",	"wlan0" },
+	{ netspeed_rx,	"󰁅 %-5s ",	"wlan0" },
 	{ vol_perc, 	"󰕾 %s%% ",	"Master" },
 	{ cpu_perc, 	" %s%% ",	NULL },
 	{ temp,		"󰔏 %s°C ",	"/sys/class/thermal/thermal_zone0/temp" },
