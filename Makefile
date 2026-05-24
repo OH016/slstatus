@@ -18,7 +18,7 @@ COM =\
 all: slstatus
 
 $(COM:=.o): config.mk $(REQ:=.h) slstatus.h
-slstatus.o: slstatus.c slstatus.h arg.h config.h config.mk $(REQ:=.h)
+slstatus.o: slstatus.c slstatus.h config.h config.mk $(REQ:=.h)
 
 .c.o:
 	$(CC) -o $@ -c $(CPPFLAGS) $(CFLAGS) $<

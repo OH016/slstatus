@@ -26,7 +26,7 @@ netspeed_rx(const char *interface)
 	if (oldrxbytes == 0)
 		return NULL;
 
-	return fmt_human((rxbytes - oldrxbytes) * 1000 / interval, 1000);
+	return fmt_human((rxbytes - oldrxbytes) * 1000 / interval);
 }
 
 const char *
@@ -46,5 +46,5 @@ netspeed_tx(const char *interface)
 	if (oldtxbytes == 0)
 		return NULL;
 
-	return fmt_human((txbytes - oldtxbytes) * 1000 / interval, 1000);
+	return fmt_human((txbytes - oldtxbytes) * 1000 / interval);
 }

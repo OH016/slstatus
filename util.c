@@ -89,33 +89,15 @@ bprintf(const char *fmt, ...)
 }
 
 const char *
-fmt_human(uintmax_t num, uint16_t base)
+fmt_human(uintmax_t scaled)
 {
-	uint32_t scaled;
 	size_t i, prefixlen;
 	const char **prefix;
-	const char *prefix_1000[] = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB",
-	                              "YB" };
-	const char *prefix_1024[] = { "B", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei",
-	                              "Zi", "Yi" };
+	const char *prefix_1000[] = { "B", "K", "M"};
 
-	switch (base) {
-	case 1000:
-		prefix = prefix_1000;
-		prefixlen = LEN(prefix_1000);
-		break;
-	case 1024:
-		prefix = prefix_1024;
-		prefixlen = LEN(prefix_1024);
-		break;
-	default:
-		warn("fmt_human: Invalid base");
-		return NULL;
-	}
-
-	scaled = num;
-	for (i = 0; i < prefixlen && scaled >= base; i++)
-		scaled /= base;
+	prefix = prefix_1000;
+	prefixlen = LEN(prefix_1000);
+	for (i = 0; i < prefixlen && scaled >= 1000; i++) scaled /= 1000;
 
 	return bprintf("%d%s", scaled, prefix[i]);
 }

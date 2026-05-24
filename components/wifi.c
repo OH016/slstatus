@@ -108,10 +108,10 @@ ifindex(const char *interface)
 	}
 	if (strcmp(ifr.ifr_name, interface) != 0) {
 		strcpy(ifr.ifr_name, interface);
-		if (ioctl(ifsock, SIOCGIFINDEX, &ifr) != 0) {
-			warn("ioctl 'SIOCGIFINDEX':");
-			return -1;
-		}
+	}
+	if (ioctl(ifsock, SIOCGIFINDEX, &ifr) != 0) {
+		warn("ioctl 'SIOCGIFINDEX':");
+		return -1;
 	}
 	return ifr.ifr_ifindex;
 }
