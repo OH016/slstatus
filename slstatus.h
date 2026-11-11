@@ -6,6 +6,9 @@ const char *battery_perc(const char *);
 /* cpu */
 const char *cpu_perc(const char *unused);
 
+/* gpu */
+const char *gpu_perc(const char *);
+
 /* datetime */
 const char *datetime(const char *fmt);
 

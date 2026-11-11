@@ -8,6 +8,7 @@ REQ = util
 COM =\
 	components/battery\
 	components/cpu\
+  components/gpu\
 	components/datetime\
 	components/netspeeds\
 	components/ram\

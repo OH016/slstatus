@@ -10,6 +10,7 @@ const unsigned int interval = 1000;
  * function            description                     argument (example)
  * battery_perc        battery percentage              battery name (BAT0)
  * cpu_perc            cpu usage in percent            NULL
+ * gpu_perc            only amd gpu usage in percent   gpu_busy_percent file
  * datetime            date and time                   format string (%F %T)
  * netspeed_rx         receive network speed           interface name (wlan0)
  * netspeed_tx         transfer network speed          interface name (wlan0)
@@ -19,14 +20,15 @@ const unsigned int interval = 1000;
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function format          argument */
-	{ wifi_essid,	"󰖩 %s ",	"wlan0" },
-	{ netspeed_tx,	"󰁝 %-4s ",	"wlan0" },
-	{ netspeed_rx,	"󰁅 %-4s ",	"wlan0" },
-	{ vol_perc, 	"󰕾 %s%% ",	"Master" },
-	{ cpu_perc, 	" %s%% ",	NULL },
-	{ temp,		"󰔏 %s°C ",	"/sys/class/thermal/thermal_zone0/temp" },
-	{ ram_perc, 	"󱘲 %s%% ",	NULL },
-	{ battery_perc, "󱐋 %s%% ",	"BAT0" },
-	{ datetime, 	"󰥔 %s",		"%R" },
+	/* function     format          argument */
+	{ wifi_essid,	  "󰖩 %s ",    "wlan0" },
+	{ netspeed_tx,	"󰁝 %-4s ",  "wlan0" },
+	{ netspeed_rx,	"󰁅 %-4s ",  "wlan0" },
+	{ vol_perc, 	  "󰕾 %s%% ",  "Master" },
+	{ cpu_perc, 	  "󰍛 %s%% ",  NULL },
+  { gpu_perc,     "󰚗 %s%% ",  "/sys/class/drm/card1/device/gpu_busy_percent" },
+	{ temp,         "󰔏 %s°C ",  "/sys/class/thermal/thermal_zone0/temp" },
+	{ ram_perc,     "󰆼 %s%% ",  NULL },
+	{ battery_perc, "󱐋 %s%% ",  "BAT0" },
+	{ datetime,     "󰥔 %s",     "%R" },
 };
